@@ -1,0 +1,13 @@
+Prompt Inicial:
+I need to build a simple mobile app for android to track and
+help the user create and mantain good habits, like drinking
+water regularly, brushing their teeth every night and going
+for a walk every now and then.
+
+I was planning to use react-native for the app,
+together with a simple database (maybe MySQL, suggestions accepted).
+I never made a mobile app before, so I really want to keep it simple
+so I can learn.
+
+Let's start with the basic framework for the app and delve later into
+the database implementation.
