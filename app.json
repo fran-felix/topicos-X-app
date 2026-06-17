@@ -3,7 +3,7 @@
     "name": "Habit Tracker",
     "slug": "habit-tracker",
     "version": "1.0.0",
-    "sdkVersion": "49.0.0",
+    "sdkVersion": "54.0.0",
     "platforms": ["android", "ios", "web"],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic"
