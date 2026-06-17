@@ -6,7 +6,6 @@
     "sdkVersion": "49.0.0",
     "platforms": ["android", "ios", "web"],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic"
   }
 }
