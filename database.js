@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
   }
 }
 
-const initialHabits = [
+/*const initialHabits = [
   {
     title: 'Drink water regularly',
     frequency: 'daily',
@@ -35,7 +35,7 @@ const initialHabits = [
     goalDays: 12,
     done: false,
   },
-];
+];*/
 
 // Web-based storage using localStorage
 const webStorage = {
