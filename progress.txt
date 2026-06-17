@@ -149,3 +149,11 @@ Pedi pra trocar pra SQLite depois, pelo visto funcionou.
 ## Muitos prompts
 Fui seguindo com vários prompts de correção de erros. Tive que mexer em dependências, na própria implementação, etc.
 Impossível manter um tracking efetivo de tudo. Tem um tracking meio bagunçado pelos commits no github pelo menos.
+
+## Critérios de avaliação
+- 5/5 Corretude e testes: o Copilot é projetado pra auxiliar com código, então funcionou muito bem. Tive que revisar alguns erros junto dele, mas no geral a implementação deu certo. Muito fácil de reportar erros, sendo que você pode anexar código, arquivos, saídas do terminal, etc do VsCode direto pro contexto do chat do Copilot.
+- 3/5 Qualidade e organização do código: não tenho conhecimento o suficiente para analisar a corretude do código implementado com muita precisão, mas me parece tudo sob controle visto que não é algo tão complexo.  Quanto à organização, se você deixar ele trabalhar sozinho, ele vai escrevendo tudo no mesmo arquivo, então tem que fazer por partes e ir direcionando ele. As funções são até que compreensíveis, mas é um código um pouco estranho de ler.
+- 5/5 Interface: ótima interface. Enxuta, ágil, relativamente fácil de aprender a usar.
+
+Percebi no meio do caminho que esses eram critérios para o app, não para o copilot. Vou deixar aqui porque vou usar de anotação pra outras coisas.
+Não cheguei a usar, mas o Copilot suporta skills do usuário. Só colocar numa pastinha de um jeito específico lá (incluir na apresentação?) que ele usa.
