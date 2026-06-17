@@ -90,11 +90,18 @@ export async function addHabit(title, frequency, time, goalDays) {
       db = await SQLite.openDatabaseAsync('habits.db');
     }
 
-    const result = await db.runAsync(
+    await db.runAsync(
       'INSERT INTO habits (title, frequency, time, goalDays, done) VALUES (?, ?, ?, ?, 0)',
       [title, frequency, time, goalDays]
     );
-    return String(result.lastInsertRowid);
+    
+    // Get the ID of the newly inserted habit
+    const result = await db.getFirstAsync(
+      'SELECT id FROM habits WHERE title = ? AND frequency = ? AND time = ? AND goalDays = ? ORDER BY id DESC LIMIT 1',
+      [title, frequency, time, goalDays]
+    );
+    
+    return String(result?.id);
   } catch (error) {
     console.error('Error adding habit:', error);
     throw error;
