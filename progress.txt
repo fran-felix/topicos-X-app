@@ -144,3 +144,8 @@ Made changes.
 
 ## Mudança
 Pedi pra trocar pra SQLite depois, pelo visto funcionou.
+
+
+## Muitos prompts
+Fui seguindo com vários prompts de correção de erros. Tive que mexer em dependências, na própria implementação, etc.
+Impossível manter um tracking efetivo de tudo. Tem um tracking meio bagunçado pelos commits no github pelo menos.
