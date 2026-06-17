@@ -40,12 +40,13 @@ const executeSqlAsync = (sql, params = []) =>
           }
         );
       },
-      reject
+      error => reject(error),
+      () => {} // onSuccess - transaction completed
     );
   });
 
 export async function ensureDatabase() {
-  await new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     db.transaction(
       tx => {
         tx.executeSql(
@@ -71,11 +72,15 @@ export async function ensureDatabase() {
                 );
               });
             }
+          },
+          (_, error) => {
+            reject(error);
+            return false;
           }
         );
       },
-      reject,
-      resolve
+      error => reject(error),
+      () => resolve()
     );
   });
 }

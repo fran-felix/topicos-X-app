@@ -26,6 +26,8 @@ export default function App() {
   const [newFrequency, setNewFrequency] = useState('daily');
   const [newTime, setNewTime] = useState('08:00');
   const [newGoal, setNewGoal] = useState('30');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setupStorage();
@@ -33,11 +35,17 @@ export default function App() {
 
   const setupStorage = async () => {
     try {
+      setLoading(true);
       await ensureDatabase();
       const storedHabits = await loadHabits();
       setHabits(storedHabits);
-    } catch (error) {
-      console.error('Storage setup failed', error);
+      setError(null);
+    } catch (err) {
+      console.error('Storage setup failed', err);
+      setError('Could not load habits. Will use empty list.');
+      setHabits([]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -128,75 +136,82 @@ export default function App() {
       <Text style={styles.title}>Habit Tracker</Text>
       <Text style={styles.description}>Create and keep habits on your phone, even after restart.</Text>
 
-      <View style={styles.fieldGroup}>
-        <TextInput
-          value={newHabit}
-          onChangeText={setNewHabit}
-          placeholder="Habit name"
-          style={styles.input}
-          returnKeyType="done"
-          onSubmitEditing={addHabit}
-        />
-      </View>
+      {loading && <Text style={styles.loadingText}>Loading habits...</Text>}
+      {error && <Text style={styles.errorText}>⚠️ {error}</Text>}
 
-      <Text style={styles.sectionLabel}>Frequency</Text>
-      <View style={styles.frequencyRow}>
-        {frequencyOptions.map(option => (
-          <TouchableOpacity
-            key={option}
-            onPress={() => setNewFrequency(option)}
-            style={[
-              styles.frequencyButton,
-              newFrequency === option && styles.frequencyButtonActive,
-            ]}
-          >
-            <Text
-              style={[
-                styles.frequencyButtonText,
-                newFrequency === option && styles.frequencyButtonTextActive,
-              ]}
-            >
-              {option}
-            </Text>
+      {!loading && (
+        <>
+          <View style={styles.fieldGroup}>
+            <TextInput
+              value={newHabit}
+              onChangeText={setNewHabit}
+              placeholder="Habit name"
+              style={styles.input}
+              returnKeyType="done"
+              onSubmitEditing={addHabit}
+            />
+          </View>
+
+          <Text style={styles.sectionLabel}>Frequency</Text>
+          <View style={styles.frequencyRow}>
+            {frequencyOptions.map(option => (
+              <TouchableOpacity
+                key={option}
+                onPress={() => setNewFrequency(option)}
+                style={[
+                  styles.frequencyButton,
+                  newFrequency === option && styles.frequencyButtonActive,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.frequencyButtonText,
+                    newFrequency === option && styles.frequencyButtonTextActive,
+                  ]}
+                >
+                  {option}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <View style={styles.row}>
+            <View style={[styles.fieldGroup, styles.fieldHalf]}>
+              <Text style={styles.sectionLabel}>Time (HH:MM)</Text>
+              <TextInput
+                value={newTime}
+                onChangeText={setNewTime}
+                placeholder="08:00"
+                style={styles.input}
+                keyboardType="numbers-and-punctuation"
+              />
+            </View>
+
+            <View style={[styles.fieldGroup, styles.fieldHalf, styles.goalField]}>
+              <Text style={styles.sectionLabel}>Goal (days)</Text>
+              <TextInput
+                value={newGoal}
+                onChangeText={setNewGoal}
+                placeholder="30"
+                style={styles.input}
+                keyboardType="number-pad"
+              />
+            </View>
+          </View>
+
+          <TouchableOpacity onPress={addHabit} style={styles.addButton}>
+            <Text style={styles.addButtonText}>Add Habit</Text>
           </TouchableOpacity>
-        ))}
-      </View>
 
-      <View style={styles.row}>
-        <View style={[styles.fieldGroup, styles.fieldHalf]}>
-          <Text style={styles.sectionLabel}>Time (HH:MM)</Text>
-          <TextInput
-            value={newTime}
-            onChangeText={setNewTime}
-            placeholder="08:00"
-            style={styles.input}
-            keyboardType="numbers-and-punctuation"
+          <FlatList
+            data={habits}
+            keyExtractor={item => item.id}
+            renderItem={renderHabit}
+            contentContainerStyle={styles.list}
+            ListEmptyComponent={<Text style={styles.emptyText}>No habits yet. Add one above.</Text>}
           />
-        </View>
-
-        <View style={[styles.fieldGroup, styles.fieldHalf, styles.goalField]}>
-          <Text style={styles.sectionLabel}>Goal (days)</Text>
-          <TextInput
-            value={newGoal}
-            onChangeText={setNewGoal}
-            placeholder="30"
-            style={styles.input}
-            keyboardType="number-pad"
-          />
-        </View>
-      </View>
-
-      <TouchableOpacity onPress={addHabit} style={styles.addButton}>
-        <Text style={styles.addButtonText}>Add Habit</Text>
-      </TouchableOpacity>
-
-      <FlatList
-        data={habits}
-        keyExtractor={item => item.id}
-        renderItem={renderHabit}
-        contentContainerStyle={styles.list}
-        ListEmptyComponent={<Text style={styles.emptyText}>No habits yet. Add one above.</Text>}
-      />
+        </>
+      )}
 
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -219,6 +234,23 @@ const styles = StyleSheet.create({
   description: {
     color: '#4b5563',
     marginBottom: 20,
+  },
+  loadingText: {
+    color: '#2563eb',
+    textAlign: 'center',
+    marginVertical: 20,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  errorText: {
+    color: '#dc2626',
+    textAlign: 'center',
+    marginVertical: 12,
+    fontSize: 14,
+    backgroundColor: '#fee2e2',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
   },
   fieldGroup: {
     marginBottom: 16,
