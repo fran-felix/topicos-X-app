@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Habit Tracker",
+    "slug": "habit-tracker",
+    "version": "1.0.0",
+    "sdkVersion": "54.0.0",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "extra": {
+      "eas": {
+        "projectId": "c02a5c0b-bb49-48fd-9386-7bb76bf5f47a"
+      }
+    },
+    "android": {
+      "package": "com.franfelix.habittracker"
+    }
+  }
+}

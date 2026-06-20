@@ -1,1 +1,6 @@
-Cada uma das branches neste repositório é a implementação de um aluno. O nome das branches é o nome de cada aluno.
+- É preciso ter o Node.js e npm instalados.
+- Primeiro clone o repositório, em específico a branch francisco
+- Na pasta do repositório, rode npm install para baixar as dependências do projeto
+- Depois, npx expo start --tunnel vai iniciar o projeto
+- Aparecerá um QR code na tela, para acessar com o aplicativo android Expo Go
+- Outra opção é digital w, o que abrirá uma versão web do aplicativo

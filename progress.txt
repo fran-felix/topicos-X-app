@@ -1,0 +1,159 @@
+## Prompt Inicial:
+I need to build a simple mobile app for android to track and
+help the user create and mantain good habits, like drinking
+water regularly, brushing their teeth every night and going
+for a walk every now and then.
+
+I was planning to use react-native for the app,
+together with a simple database (maybe MySQL, suggestions accepted).
+I never made a mobile app before, so I really want to keep it simple
+so I can learn.
+
+Let's start with the basic framework for the app and delve later into
+the database implementation.
+
+## Resposta:
+Optimized tool selectionChecking the workspace contents so I can suggest the best simple React Native setup.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app)
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/progress.txt)
+
+I found there’s no React Native project yet. I’m creating a minimal Expo-based app scaffold so you can run it quickly and expand later.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/.gitignore)
+
+The app shell is ready to generate. I’m creating the Expo project files and a simple habit tracker UI.
+
+Created [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package.json)
+
+Created [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/app.json)
+
+Created [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/babel.config.js)
+
+Created [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/App.js)
+
+## React Native Starter Created
+
+A minimal Expo-based habit tracker scaffold is now in your workspace:
+
+- package.json
+- app.json
+- babel.config.js
+- App.js
+
+### What this includes
+- Basic habit list UI
+- Add habit input
+- Mark habit done / undone
+- Remove habit
+- Simple styling for mobile
+
+### Next steps
+1. Install dependencies:
+   - `npm install`
+2. Start the app:
+   - `npm run start`
+3. Open on Android with:
+   - `npm run android`
+
+> Note: this initial version keeps data in memory. Next, we can add persistence, local storage, or a backend database.
+
+If you want, I can next add local storage for habits or help choose a simple database plan.
+
+Made changes.
+
+## Prompt 2:
+Okay it worked. Now let's move on to making changes permanent. We need to implement a database and link it to the app so habits can persist even after app restart. I want the database to be local on the phone, so it must be something simple and light.
+
+Besides, I want to add some other characteristics to the habits, beyond name and completion status:
+- Frequency (daily, weekly, monthly)
+- Time of the habit (HH:MM 24 hour format)
+- And finally, a goal for the user, such as "I want to keep this habit for 30 days"
+
+Set up the database in database.js and link it to App.js so it's more organized
+
+## Resposta
+
+Reviewing the current app and package state before wiring in persistence.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package.json)
+
+I’m checking the current app files and package state to rebuild persistence cleanly.
+
+Replacing 1 lines with 1 lines in [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package.json)
+
+I found package.json is currently empty, so I’m verifying the workspace and restoring the app structure before adding persistence.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app)
+
+I’m reading the current package.json, App.js, and database.js to restore persistence correctly.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package.json)
+
+I found the project metadata is missing. I’m reading the current source files and then restoring the React Native setup with local JSON persistence.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/database.js)
+
+I found package.json and database.js are empty. Next I’m checking the app source and lockfile so I can restore the necessary setup safely.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/App.js)
+
+Verifying current dependency metadata before rebuilding the project files.
+
+Read [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package-lock.json#1-1), lines 1 to 160
+
+I’m restoring the project files and wiring the JSON database module into the app.
+
+Replacing 188 lines with 448 lines in [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/package.json), [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/database.js), [](file:///d%3A/MyStuff/Vida%20Real/Faculdade/2026-1/topicos-X-app/App.js)
+
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+✅ The project has been restored and the app now uses a separate JSON-based database module.
+
+### What’s been set up
+- package.json restored with Expo and `expo-file-system`
+- database.js created for habits persistence
+- App.js now:
+  - loads habits from database.js
+  - saves habits to database.js
+  - supports:
+    - `frequency`
+    - `time` (`HH:MM`)
+    - `goalDays`
+
+### Run next
+```powershell
+npm install
+npm start
+```
+
+If anything fails, send the exact error and I’ll fix it.
+
+Made changes.
+
+## Mudança
+Pedi pra trocar pra SQLite depois, pelo visto funcionou.
+
+
+## Muitos prompts
+Fui seguindo com vários prompts de correção de erros. Tive que mexer em dependências, na própria implementação, etc.
+Impossível manter um tracking efetivo de tudo. Tem um tracking meio bagunçado pelos commits no github pelo menos.
+
+## Critérios de avaliação
+- 5/5 Corretude e testes: o Copilot é projetado pra auxiliar com código, então funcionou muito bem. Tive que revisar alguns erros junto dele, mas no geral a implementação deu certo. Muito fácil de reportar erros, sendo que você pode anexar código, arquivos, saídas do terminal, etc do VsCode direto pro contexto do chat do Copilot.
+- 3/5 Qualidade e organização do código: não tenho conhecimento o suficiente para analisar a corretude do código implementado com muita precisão, mas me parece tudo sob controle visto que não é algo tão complexo.  Quanto à organização, se você deixar ele trabalhar sozinho, ele vai escrevendo tudo no mesmo arquivo, então tem que fazer por partes e ir direcionando ele. As funções são até que compreensíveis, mas é um código um pouco estranho de ler.
+- 5/5 Interface: ótima interface. Enxuta, ágil, relativamente fácil de aprender a usar.
+
+Percebi no meio do caminho que esses eram critérios para o app, não para o copilot. Vou deixar aqui porque vou usar de anotação pra outras coisas.
+Não cheguei a usar, mas o Copilot suporta skills do usuário. Só colocar numa pastinha de um jeito específico lá (incluir na apresentação?) que ele usa.
